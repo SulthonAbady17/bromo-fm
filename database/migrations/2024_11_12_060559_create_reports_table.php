@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('police_station');
             $table->string('reference_police_number');
             $table->dateTime('report_date_time');
+            // $table->timestamp('report_date_time');
             $table->text('content');
             $table->foreignUuid('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();

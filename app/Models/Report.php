@@ -33,8 +33,52 @@ class Report extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function policeStation(): BelongsTo
+    public function getDay(): string
     {
-        return $this->belongsTo(PoliceStation::class);
+        $day = array("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu");
+        $report_day = date("w", strtotime($this->report_date_time));
+        return $day[$report_day];
+    }
+
+    public function getMonth($month): string
+    {
+        $months = [
+            1 => "Januari",
+            2 => "Februari",
+            3 => "Maret",
+            4 => "April",
+            5 => "Mei",
+            6 => "Juni",
+            7 => "Juli",
+            8 => "Agustus",
+            9 => "September",
+            10 => "Oktober",
+            11 => "November",
+            12 => "Desember"
+        ];
+
+        $report_month = $month - 1;
+
+        return $months[$report_month];
+    }
+
+    public function getDate(): string
+    {
+        $date = date('d', strtotime($this->created_at));
+        $month = $this->getMonth(date('n', strtotime($this->created_at)));
+        $year = date('Y', strtotime($this->created_at));
+
+        return "Probolinggo, {$date} {$month} {$year}";
+    }
+
+    public function getReportDate(): string
+    {
+        $date = date('d', strtotime($this->report_date_time));
+        $month = $this->getMonth(date('n', strtotime($this->report_date_time)));
+        $year = date('Y', strtotime($this->report_date_time));
+        $time = date('H.i', strtotime($this->report_date_time));
+        $report_date = "{$this->getDay()} Tanggal {$date} {$month} {$year} pukul {$time} WIB";
+
+        return $report_date;
     }
 }
