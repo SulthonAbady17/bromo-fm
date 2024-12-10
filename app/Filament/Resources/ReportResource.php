@@ -38,6 +38,9 @@ class ReportResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255),
+                        Forms\Components\TextInput::make('nik')
+                            ->required()
+                            ->maxLength(16),
                         Forms\Components\Select::make('citizen')
                             ->options([
                                 'WNI' => 'WNI',
@@ -131,7 +134,7 @@ class ReportResource extends Resource
                         ->label('PDF')
                         ->color('success')
                         ->icon('heroicon-o-document-arrow-down')
-                        ->url(fn (Report $report) => route('pdf', $report))
+                        ->url(fn(Report $report) => route('pdf', $report))
                         ->openUrlInNewTab(),
                 ]),
             ])
@@ -140,7 +143,7 @@ class ReportResource extends Resource
                     ExportBulkAction::make()
                         ->exports([
                             ExcelExport::make('table')
-                                ->askForFilename(date('dmY').'_export_report')
+                                ->askForFilename(date('dmY') . '_export_report')
                                 ->withColumns([
                                     Column::make('reference_number')->heading('Nomor Surat'),
                                     Column::make('address')->heading('Alamat Pelapor'),
@@ -151,10 +154,10 @@ class ReportResource extends Resource
                                     Column::make('user.name')->heading('Staff'),
                                     Column::make('report_date_time')
                                         ->heading('Tanggal Laporan Kepolisian')
-                                        ->formatStateUsing(fn ($state) => date('d/m/Y H:i', strtotime($state))),
+                                        ->formatStateUsing(fn($state) => date('d/m/Y H:i', strtotime($state))),
                                     Column::make('created_at')
                                         ->heading('Tanggal Laporan')
-                                        ->formatStateUsing(fn ($state) => date('d/m/Y H:i', strtotime($state))),
+                                        ->formatStateUsing(fn($state) => date('d/m/Y H:i', strtotime($state))),
                                 ]),
                         ])->hidden(! auth()->user()->isAdmin()),
                     Tables\Actions\DeleteBulkAction::make(),

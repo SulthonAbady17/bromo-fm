@@ -14,6 +14,7 @@ class Report extends Model
     protected $fillable = [
         'reference_number',
         'name',
+        'nik',
         'birthplace',
         'birthdate',
         'gender',

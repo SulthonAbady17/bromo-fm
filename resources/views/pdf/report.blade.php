@@ -41,27 +41,32 @@
         <p class="text-xs indent-8 mt-4 text-justify">Bersama in kami memberitahukan dengan hormat bahwa telah disiarkan
             Berita
             Kehilangan
-            dari SPKT, yang dilaporkan pada {{ $report->getReportDate() }} sebagai berikut:</p>
+            dari SPKT {{ $report->police_station }}, yang dilaporkan pada {{ $report->getReportDate() }} sebagai
+            berikut:</p>
         <table class="mx-auto text-xs mt-2">
             <tr>
                 <td>Nama</td>
-                <td class="font-bold">: {{ $report->name }}</td>
+                <td class="font-bold"> : {{ $report->name }}</td>
+            </tr>
+            <tr>
+                <td>NIK</td>
+                <td> : {{ $report->nik }}</td>
             </tr>
             <tr>
                 <td>Tempat tanggal lahir</td>
-                <td>: {{ $report->birthplace }} {{ date('d-m-Y', strtotime($report->birthdate)) }}</td>
+                <td> : {{ $report->birthplace }} {{ date('d-m-Y', strtotime($report->birthdate)) }}</td>
             </tr>
             <tr>
                 <td>Kewarganegaraan</td>
-                <td>: {{ $report->citizen }}</td>
+                <td> : {{ $report->citizen }}</td>
             </tr>
             <tr>
                 <td>Pekerjaan</td>
-                <td>: {{ $report->profession }}</td>
+                <td> : {{ $report->profession }}</td>
             </tr>
             <tr>
                 <td>Alamat</td>
-                <td>: {{ $report->address }}</td>
+                <td> : {{ $report->address }}</td>
             </tr>
         </table>
         <p>Kehilangan:</p>
@@ -71,7 +76,7 @@
         <p class="text-xs text-justify indent-8 mt-2">Demikianlah surat bukti siar ini dibuat dengan sebenarnya
             berdasarkan SURAT
             TANDA LAPOR
-            KEHILANGAN dari SPKT.</p>
+            KEHILANGAN dari SPKT {{ $report->police_station }}.</p>
 
         <div class="flex justify-end mt-2">
             <div class="text-center text-xs">

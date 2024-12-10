@@ -31,6 +31,7 @@ class ReportFactory extends Factory
         return [
             'reference_number' => $reference_number,
             'name' => fake()->name(),
+            'nik' => fake()->nik(),
             'birthplace' => fake()->city(),
             'birthdate' => fake()->date(),
             'gender' => fake()->randomElement(['male', 'female']),

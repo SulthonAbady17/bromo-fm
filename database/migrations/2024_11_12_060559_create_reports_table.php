@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('reference_number')->unique()->nullable();
             $table->string('name');
+            $table->string('nik');
             $table->string('birthplace');
             $table->date('birthdate');
             $table->enum('gender', ['male', 'female']);
@@ -25,7 +26,6 @@ return new class extends Migration
             $table->string('police_station');
             $table->string('reference_police_number');
             $table->dateTime('report_date_time');
-            // $table->timestamp('report_date_time');
             $table->text('content');
             $table->foreignUuid('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
