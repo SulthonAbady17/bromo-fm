@@ -81,7 +81,7 @@
         <div class="flex justify-end mt-2">
             <div class="text-center text-xs">
                 <p class="mb-2">{{ $report->getDate() }}</p>
-                <p>LPPL BROMOFM</p>
+                <p>LPPL BROMO FM</p>
                 <p>KABUPATEN PROBOLINGGO</p>
                 <p>Kepala Studio</p>
                 <p class="underline underline-offset-0 mt-10">Sony Wahyu Wirawan, S.I.Kom</p>

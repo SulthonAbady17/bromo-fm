@@ -13,11 +13,16 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
+
+    protected static ?string $label = 'Staff';
+
+    protected static ?string $slug = 'staff';
+
+    protected static ?string $navigationLabel = 'Staff';
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
@@ -32,6 +37,7 @@ class UserResource extends Resource
                 Section::make()
                     ->schema([
                         TextInput::make('name')
+                            ->label('Nama')
                             ->autocapitalize()
                             ->autofocus()
                             ->required(),
@@ -60,11 +66,9 @@ class UserResource extends Resource
     {
         return $table
             ->modifyQueryUsing(fn (Builder $query) => $query->where('is_admin', false))
-            // ->recordUrl(
-            //     fn(Model $record): string => route('view', ['record' => $record])
-            // )
             ->columns([
                 TextColumn::make('name')
+                    ->label('Nama')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('email'),

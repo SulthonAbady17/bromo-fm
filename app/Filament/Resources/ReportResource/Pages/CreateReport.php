@@ -15,11 +15,13 @@ class CreateReport extends CreateRecord
     {
         $roman = new IntToRoman;
         $order = Report::count() + 1;
+        $number = sprintf('%03d', $order);
+        $date = date('d');
         $month = $roman->filter(date('n'));
         $year = date('Y');
 
         $data['user_id'] = auth()->id();
-        $data['reference_number'] = "002/{$order}/{$month}/BROMO FM/{$year}";
+        $data['reference_number'] = "{$number}/{$date}/{$month}/BROMO FM/{$year}";
 
         return $data;
     }
